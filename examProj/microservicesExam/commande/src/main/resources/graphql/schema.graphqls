@@ -1,0 +1,19 @@
+# commande/src/main/resources/graphql/schema.graphqls
+
+type Order {
+    id: ID!
+    productId: ID!
+    quantity: Int!
+    totalPrice: Float!
+}
+
+type Query {
+    orders: [Order!]!
+    orderById(id: ID!): Order
+}
+
+type Mutation {
+    createOrder(productId: ID!, quantity: Int!): Order
+    updateOrder(id: ID!, productId: ID, quantity: Int, totalPrice: Float): Order
+    deleteOrder(id: ID!): Boolean
+}

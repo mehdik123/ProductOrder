@@ -1,0 +1,16 @@
+server:
+  port: 8888  # Common default for config server
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///${user.dir}/../config-repo
+          # Explanation:
+          #   file:// -> we want a local folder
+          #   ${user.dir} -> the current working directory (the config-server folder)
+          #   ../config-repo -> go up one folder, then into config-repo
+          #
+          # If your config-repo is somewhere else, specify the absolute path:
+          # uri: file:///C:/my-project/config-repo

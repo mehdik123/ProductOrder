@@ -1,0 +1,12 @@
+# config-repo/notification-service.yml
+spring:
+  datasource:
+    url: jdbc:h2:mem:notificationdb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+application:
+  some-notification-property: "Hello from the Config Server - Notifications!"

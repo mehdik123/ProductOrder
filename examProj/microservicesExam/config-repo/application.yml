@@ -1,0 +1,6 @@
+# config-repo/application.yml
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092  # Common Kafka config for all microservices
+server:
+  port: 0  # So it won't conflict if any microservice picks it up

@@ -1,0 +1,30 @@
+server:
+  port: 8082  # or any free port
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:commandedb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092  # Adjust if using Docker or different host
+
+# Resilience4j (circuit breaker) default config example
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+    instances:
+      produitCB:
+        baseConfig: default
